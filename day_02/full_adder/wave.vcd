@@ -1,0 +1,35 @@
+$date
+	Thu Mar 26 11:09:27 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module full_adder_d2_tb $end
+$var wire 1 ! sum $end
+$var wire 1 " carry $end
+$var reg 1 # a $end
+$var reg 1 $ b $end
+$var reg 1 % cin $end
+$scope module dut $end
+$var wire 1 # a $end
+$var wire 1 $ b $end
+$var wire 1 " carry $end
+$var wire 1 % cin $end
+$var wire 1 ! sum $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#16
+$dumpvars
+1%
+1$
+1#
+1"
+1!
+$end
