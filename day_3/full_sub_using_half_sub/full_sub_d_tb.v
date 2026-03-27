@@ -1,0 +1,15 @@
+module full_sub_d_tb;
+reg a,b,bin;
+wire diff,bout
+full_sub_d uut(.a(a),.b(b),.bin(bin),.diff(diff),.bout(bout));
+integer i;
+initial begin
+$display("a b bin|diff bout");
+$monitor("%b %b %b|%b %b",a,b,bin,diff,bout);
+for(i=0;i<8;i=i+1) begin
+{a,b,bin}=i;
+#10;
+end
+$finish;
+end
+endmodule

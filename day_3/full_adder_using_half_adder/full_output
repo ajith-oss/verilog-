@@ -1,0 +1,89 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x64b842b3ea20 .scope module, "full_adder_tb" "full_adder_tb" 2 1;
+ .timescale 0 0;
+v0x64b842b53850_0 .var "a", 0 0;
+v0x64b842b53940_0 .var "b", 0 0;
+v0x64b842b53a50_0 .var "cin", 0 0;
+v0x64b842b53b40_0 .net "cout", 0 0, L_0x64b842b54220;  1 drivers
+v0x64b842b53be0_0 .var/i "i", 31 0;
+v0x64b842b53cd0_0 .net "sum", 0 0, L_0x64b842b53fc0;  1 drivers
+S_0x64b842b3ebb0 .scope module, "utt" "full_adder_gate" 2 4, 3 6 0, S_0x64b842b3ea20;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "cin";
+    .port_info 3 /OUTPUT 1 "sum";
+    .port_info 4 /OUTPUT 1 "cout";
+L_0x64b842b54220 .functor OR 1, L_0x64b842b53e50, L_0x64b842b54100, C4<0>, C4<0>;
+v0x64b842b531a0_0 .net "a", 0 0, v0x64b842b53850_0;  1 drivers
+v0x64b842b53260_0 .net "b", 0 0, v0x64b842b53940_0;  1 drivers
+v0x64b842b53330_0 .net "c1", 0 0, L_0x64b842b53e50;  1 drivers
+v0x64b842b53430_0 .net "c2", 0 0, L_0x64b842b54100;  1 drivers
+v0x64b842b53500_0 .net "cin", 0 0, v0x64b842b53a50_0;  1 drivers
+v0x64b842b535f0_0 .net "cout", 0 0, L_0x64b842b54220;  alias, 1 drivers
+v0x64b842b53690_0 .net "s1", 0 0, L_0x64b842b53dc0;  1 drivers
+v0x64b842b53780_0 .net "sum", 0 0, L_0x64b842b53fc0;  alias, 1 drivers
+S_0x64b842b03490 .scope module, "ha1" "half_adder" 3 8, 3 1 0, S_0x64b842b3ebb0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "sum";
+    .port_info 3 /OUTPUT 1 "carry";
+L_0x64b842b53dc0 .functor XOR 1, v0x64b842b53850_0, v0x64b842b53940_0, C4<0>, C4<0>;
+L_0x64b842b53e50 .functor AND 1, v0x64b842b53850_0, v0x64b842b53940_0, C4<1>, C4<1>;
+v0x64b842b3f0e0_0 .net "a", 0 0, v0x64b842b53850_0;  alias, 1 drivers
+v0x64b842b52880_0 .net "b", 0 0, v0x64b842b53940_0;  alias, 1 drivers
+v0x64b842b52940_0 .net "carry", 0 0, L_0x64b842b53e50;  alias, 1 drivers
+v0x64b842b52a10_0 .net "sum", 0 0, L_0x64b842b53dc0;  alias, 1 drivers
+S_0x64b842b52b80 .scope module, "ha2" "half_adder" 3 9, 3 1 0, S_0x64b842b3ebb0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "sum";
+    .port_info 3 /OUTPUT 1 "carry";
+L_0x64b842b53fc0 .functor XOR 1, L_0x64b842b53dc0, v0x64b842b53a50_0, C4<0>, C4<0>;
+L_0x64b842b54100 .functor AND 1, L_0x64b842b53dc0, v0x64b842b53a50_0, C4<1>, C4<1>;
+v0x64b842b52df0_0 .net "a", 0 0, L_0x64b842b53dc0;  alias, 1 drivers
+v0x64b842b52ec0_0 .net "b", 0 0, v0x64b842b53a50_0;  alias, 1 drivers
+v0x64b842b52f60_0 .net "carry", 0 0, L_0x64b842b54100;  alias, 1 drivers
+v0x64b842b53030_0 .net "sum", 0 0, L_0x64b842b53fc0;  alias, 1 drivers
+    .scope S_0x64b842b3ea20;
+T_0 ;
+    %vpi_call 2 7 "$display", "a b cin|sum carry" {0 0 0};
+    %vpi_call 2 8 "$monitor", "%b %b %b|%b %b", v0x64b842b53850_0, v0x64b842b53940_0, v0x64b842b53a50_0, v0x64b842b53cd0_0, v0x64b842b53b40_0 {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x64b842b53be0_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v0x64b842b53be0_0;
+    %cmpi/s 8, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/vec4 v0x64b842b53be0_0;
+    %pad/s 3;
+    %split/vec4 1;
+    %store/vec4 v0x64b842b53a50_0, 0, 1;
+    %split/vec4 1;
+    %store/vec4 v0x64b842b53940_0, 0, 1;
+    %store/vec4 v0x64b842b53850_0, 0, 1;
+    %delay 10, 0;
+    %load/vec4 v0x64b842b53be0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x64b842b53be0_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %vpi_call 2 13 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "full_adder_h_tb.v";
+    "full_adder_h.v";
