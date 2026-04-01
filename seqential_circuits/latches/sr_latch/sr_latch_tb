@@ -1,0 +1,19 @@
+
+module sr_latch_tb;
+reg en,s,r;
+wire q;
+wire qbar;
+sr_latch dut(.en(en),.s(s),.r(r),.q(q),.qbar(qbar));
+integer i;
+initial begin
+$display("s r en|q qbar");
+$monitor("%b %b %b|%b %b",s,r,en,q,qbar);
+en=1;
+for(i=0;i<4;i=i+1) begin
+{s,r}=i;
+#10;
+end
+en=0;s=1;r=0; #10;
+$finish;
+end
+endmodule
