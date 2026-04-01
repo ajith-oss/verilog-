@@ -1,0 +1,17 @@
+module even_parity_tb;
+reg a,b,cin;
+wire y_ha,y_ba;
+top_module uut(.a(a),.b(b),.cin(cin),.y_ha(y_ha),.y_ba(y_ba));
+integer i;
+initial begin
+$display("a b cin|HA(y_ha) BA(y_ba)");
+$monitor("%b %b %b|%b %b",a,b,cin,y_ha,y_ba);
+for(i=0;i<8;i=i+1) begin
+{a,b,cin}=i;
+#10;
+end
+$finish;
+end
+endmodule
+
+
