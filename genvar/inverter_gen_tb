@@ -1,0 +1,18 @@
+module inverter_tb;
+reg [7:0] a;
+wire [7:0] y;
+inverter_gen dut(.a(a),.y(y));
+integer i;
+initial begin
+for(i=0;i<16;i=i+1) begin
+a = i;
+#10;
+end
+$finish;
+end
+initial begin
+$monitor("time=%0t a=%b y%b",$time,a,y);
+$dumpfile("wave.vcd");
+$dumpvars(0);
+end
+endmodule
